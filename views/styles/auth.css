@@ -1,0 +1,26 @@
+h1{
+    font-size: 5em;
+}
+.left, .right{
+    height: 100vh;
+}
+.right{
+    padding-top: 10%;
+    overflow-y: scroll;
+}
+
+.auth-bg{
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url("/views/images/auth-bg.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.auth-text{
+    margin-top: 35%;
+}
+
+.form-control{
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+}
+
