@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../autoload.php';  
-use app\classes\Events;
 
 if(isset($_SESSION['user_id'])){
     

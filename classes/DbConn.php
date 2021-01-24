@@ -1,5 +1,4 @@
 <?php
-	namespace classes;
 	require_once "config.php";
 	class DbConn{
 		private static $host = DB_HOST;

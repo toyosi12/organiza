@@ -1,8 +1,6 @@
 <?php
-namespace classes;
+require_once __DIR__ . '/../autoload.php';
 
-use app\classes\Crud;
-use app\classes\Helpers;
 class Auth extends Crud{
     public static function signup($data){
         foreach($data as $key => $value){

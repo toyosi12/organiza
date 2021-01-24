@@ -1,9 +1,4 @@
 <?php
-namespace classes;
-
-use app\classes\Crud;
-use app\classes\Helpers;
-
 class Events extends Crud{
 
     public function __construct(){

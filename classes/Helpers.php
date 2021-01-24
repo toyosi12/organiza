@@ -1,5 +1,4 @@
 <?php
-namespace classes;
 class Helpers{
     private static $targetDir = "uploads/";
     private static $maxSize = 100000;//100kb
