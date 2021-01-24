@@ -136,7 +136,7 @@
                 data = data[0];
                 let image = '/' + data.image;
                 $('#image-container').html(`
-                    <img src=${ image } alt=${ data.title } />
+                    <img src=${ image } alt=${ data.title } onerror="this.onerror=null; this.src = '/views/images/auth-bg.jpg'" />
                 `);
                 let badge = '';
                 for(let eventType in data.event_types){
