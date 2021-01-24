@@ -30,10 +30,10 @@
             <div class="col-md-12">
                 <h4>Recent Events</h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search Events..." id="search">
                     <div class="input-group-prepend">
-                      <span class="input-group-text"><i class="fa fa-search text-primary"></i></span>
+                        <span class="input-group-text"><i class="fa fa-search text-primary"></i></span>
                     </div>
+                    <input type="text" class="form-control" placeholder="Search Events..." id="search">
                   </div>
                 <p id="loading"></p>
             </div>
