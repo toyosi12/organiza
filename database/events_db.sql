@@ -193,3 +193,6 @@ ALTER TABLE `events`
 ALTER TABLE `event_details`
   ADD CONSTRAINT `event_details_ibfk_1` FOREIGN KEY (`event_type_id`) REFERENCES `event_types` (`id`),
   ADD CONSTRAINT `event_details_ibfk_2` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `attendees` DROP FOREIGN KEY `attendees_ibfk_1`; ALTER TABLE `attendees` ADD CONSTRAINT `attendees_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events`(`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
