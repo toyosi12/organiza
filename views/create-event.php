@@ -270,7 +270,7 @@
                 console.log('error: ', error);
             })
 
-            $('#submit').prop('disabled', true).html('Create Event');
+            $('#submit').prop('disabled', false).html('Create Event');
 
             // console.log($('#event_type').val());
         }

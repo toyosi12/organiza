@@ -195,6 +195,7 @@
                     $('#email').val('');
                 })
             .catch(error => {
+                $('#submit-btn').prop('disabled', false).html('Apply');
                 console.log('error: ', error);
             })
     }
