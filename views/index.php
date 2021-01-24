@@ -77,6 +77,7 @@
                                 specialClass = "premium";
                             }else if(events[event].event_types.includes('Premium-Only Webinar')){
                                 badgeText = 'Premium-Only Webinar';
+                                specialClass = "premium";
                             }else{
                                 badgeText = "nil";
                                 specialClass = "";
