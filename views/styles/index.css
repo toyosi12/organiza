@@ -57,17 +57,25 @@ body{
 .date{
     font-size: 0.8em
 }
-.premium{
+
+
+.special{
     background-color: rgb(233, 232, 250);
 }
 
 .badge-premium{
+    background-color: #cf0909;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.badge-special{
     background-color: #11038d;
     color: #fff;
     margin-bottom: 3px;
 }
 
-.badge-premium.hidden{
+.hidden{
     visibility: hidden;
 }
 

@@ -68,13 +68,13 @@
                         for(let event in events){
                             if(events[event].event_types.includes('Recruiting Mission')){ 
                                 badgeText = 'Recruiting Mission';
-                                specialClass = "premium";
+                                specialClass = "special";
                             }else if(events[event].event_types.includes('Leap')){
                                 badgeText = 'Leap';
-                                specialClass = "premium";
+                                specialClass = "special";
                             }else if(events[event].event_types.includes('Hackathon')){
                                 badgeText = 'Hackathon';
-                                specialClass = "premium";
+                                specialClass = "special";
                             }else if(events[event].event_types.includes('Premium-Only Webinar')){
                                 badgeText = 'Premium-Only Webinar';
                                 specialClass = "premium";
@@ -87,9 +87,9 @@
                                 <div class="col-md-3 mb-4" onclick="navigate(${ events[event].event_id })">
                                     <div class="card">
                                         <img src=${ imagePath } class="card-img-top" style="object-fit: cover" onerror="this.onerror=null; this.src = '/views/images/auth-bg.jpg'" />
-                                        <div class="card-body ${specialClass}">
+                                        <div class="card-body ${(specialClass === 'special') ? 'special' : ''}">
                                             <h5 class="card-title">${events[event].title}</h5>
-                                            <span class="badge badge-premium ${(specialClass !== "premium") ? "hidden" : ""}">${badgeText}</span>
+                                            <span class="badge ${(specialClass === "special" || specialClass === 'premium') ? `badge-${specialClass}` : "hidden"}">${badgeText}</span>
                                             <p class="card-text date">${events[event].start_date + " " + events[event].start_time}</p>
                                         </div>
                                     </div>
