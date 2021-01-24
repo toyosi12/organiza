@@ -1,1 +1,1 @@
-<h3>Not Found</h3>
+<h2 style="text-align: center; font-family: tahoma; margin-top: 80px;">Page Not Found</h2>

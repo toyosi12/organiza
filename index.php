@@ -30,6 +30,9 @@ switch ($request) {
     case '/event':
         require __DIR__ . '/views/event-details.php';
         break;
+    case '/buy-membership': 
+        require __DIR__ . '/views/buy-membership.php';
+        break;
 
     /**
      * Dashboard
@@ -43,8 +46,8 @@ switch ($request) {
     case '/dashboard/events/edit' :
         require __DIR__ . '/views/edit-event.php';
         break;
-    case '/dashboard/events/edit': 
-        require __DIR__ . '/views/edit-event.php';
+    case '/buy-membership': 
+        require __DIR__ . '/views/buy-membership.php';
         break;
 
     /**

@@ -29,6 +29,7 @@
             </div>
             <div class="col-md-12 mb-3">
                 <a href="/dashboard/events/create" class="btn btn-primary text-white"><i class="fa fa-plus mr-2"></i>Create an Event</a>
+                <a href="/" class="btn bg-light float-right">Visit Site</a>
             </div>
             <div class="col-md-12">
                 <h5>Your events</h5>
@@ -89,7 +90,7 @@
                                     <td>${ data[d].end_date } ${ data[d].end_time }</td>
                                     <td>
                                         <button type="button" class="btn edit-btn" onclick="editEvent(${ data[d].event_id })"><i class="fa fa-pencil"></i></button>
-                                        <button type="button" class="btn delete-btn"  onclick="deleteEvent(${ data[d].event_id })"><i class="fa fa-trash"></i></button>
+                                        <button type="button" class="btn delete-btn" label="Delete"  onclick="deleteEvent(${ data[d].event_id })"><i class="fa fa-trash"></i></button>
                                     </td>
                                 </tr>
                             `;

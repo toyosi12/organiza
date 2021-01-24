@@ -54,6 +54,7 @@
     <script>
         
         async function loadEvents(){
+            $('#loading').html("Loading...");
             await fetch('/api/events')
                     .then(response => response.json())
                     .then(events => {
@@ -74,6 +75,8 @@
                             }else if(events[event].event_types.includes('Hackathon')){
                                 badgeText = 'Hackathon';
                                 specialClass = "premium";
+                            }else if(events[event].event_types.includes('Premium-Only Webinar')){
+                                badgeText = 'Premium-Only Webinar';
                             }else{
                                 badgeText = "nil";
                                 specialClass = "";
@@ -106,6 +109,9 @@
                     .catch(error => {
                         console.log("Something went wrong");
                     })
+
+                    $('#loading').html("");
+
         }
         $(document).ready(function(){
             loadEvents();
