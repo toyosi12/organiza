@@ -1,7 +1,7 @@
 <?php
     namespace classes;
 
-    use classes\DbConn;
+    use app\classes\DbConn;
     
     class Crud extends DbConn{
         public function __construct(){

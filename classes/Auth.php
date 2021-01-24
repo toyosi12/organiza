@@ -1,8 +1,8 @@
 <?php
 namespace classes;
 
-use classes\Crud;
-use classes\Helpers;
+use app\classes\Crud;
+use app\classes\Helpers;
 class Auth extends Crud{
     public static function signup($data){
         foreach($data as $key => $value){
