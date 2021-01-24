@@ -85,7 +85,7 @@
                             eventsContent +=  `
                                 <div class="col-md-3 mb-4" onclick="navigate(${ events[event].event_id })">
                                     <div class="card">
-                                        <img src=${ imagePath } class="card-img-top" style="object-fit: cover" />
+                                        <img src=${ imagePath } class="card-img-top" style="object-fit: cover" onerror="this.onerror=null; this.src = '/views/images/auth-bg.jpg'" />
                                         <div class="card-body ${specialClass}">
                                             <h5 class="card-title">${events[event].title}</h5>
                                             <span class="badge badge-premium ${(specialClass !== "premium") ? "hidden" : ""}">${badgeText}</span>
@@ -168,7 +168,7 @@
                         eventsContent +=  `
                             <div class="col-md-3 mb-4" onclick="navigate(${ events[event].event_id })">
                                 <div class="card">
-                                    <img src=${ imagePath } class="card-img-top" style="object-fit: cover" />
+                                    <img src=${ imagePath } class="card-img-top" style="object-fit: cover" onerror="this.onerror=null; this.src = '/views/images/auth-bg.jpg'" />
                                     <div class="card-body ${specialClass}">
                                         <h5 class="card-title">${events[event].title}</h5>
                                         <span class="badge badge-premium ${(specialClass !== "premium") ? "hidden" : ""}">${badgeText}</span>
