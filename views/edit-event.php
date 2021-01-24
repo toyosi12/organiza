@@ -154,7 +154,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Edit Event</button>
+                                <button type="submit" id="submit" class="btn btn-primary btn-block">Edit Event</button>
                             </div>
                            
                         </form>
@@ -247,7 +247,7 @@
             })
         }
 
-        async function editEvent(){            
+        async function editEvent(){  
             let formData = new FormData();
             formData.append('title', $('#title').val());
             formData.append('eventType', $('#event_type').val());
@@ -260,6 +260,7 @@
             formData.append('image', document.getElementById('event_image').files[0]);
             formData.append('eventId', <?php echo $_GET['event']; ?>);
 
+            $('#submit').prop('disabled', true).html('Loading...');          
             await fetch('/api/events/edit', {
                 method: 'POST',
                 body: formData
@@ -278,6 +279,8 @@
             .catch(error => {
                 console.log('error: ', error);
             })
+            $('#submit').prop('disabled', false).html('Edit Event');          
+
 
             // console.log($('#event_type').val());
         }
