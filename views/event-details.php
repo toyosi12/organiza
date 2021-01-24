@@ -69,7 +69,7 @@
                 </div>
                 <div class="modal-body" id="modal-body">
                     <p>Sorry, this is a Premium-only webinar</p>
-                    <a href="/dashboard/buy-membership" class="btn btn-primary btn-block">Buy a membership plan</button>
+                    <a href="/dashboard/buy-membership" class="btn btn-primary btn-block">Buy a membership plan</a>
                 </div>
             </div>
         </div>
