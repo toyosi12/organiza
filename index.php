@@ -27,7 +27,9 @@ switch ($request) {
     case '/signup' :
         require __DIR__ . '/views/signup.php';
         break;
-    
+    case '/event':
+        require __DIR__ . '/views/event-details.php';
+        break;
 
     /**
      * Dashboard
@@ -54,6 +56,9 @@ switch ($request) {
     case '/api/login':
         require __DIR__ . '/backend/login.php';
         break;
+    case '/api/logout':
+        require __DIR__ . '/backend/logout.php';
+        break;
     case '/api/event_types':
         require __DIR__ . '/backend/event-types.php';
         break;
@@ -68,6 +73,18 @@ switch ($request) {
         break;
     case '/api/user_event':
         require __DIR__ . '/backend/user-event.php';
+        break;
+    case '/api/events':
+        require __DIR__ . '/backend/all-events.php';
+        break;
+    case '/api/events/search':
+        require __DIR__ . '/backend/search-events.php';
+        break;
+    case '/api/event_details':
+        require __DIR__ . '/backend/event-details.php';
+        break;
+    case '/api/events/attend':
+        require __DIR__ . '/backend/attend-event.php';
         break;
     case '/api/events/delete':
         require __DIR__ . '/backend/delete-event.php';

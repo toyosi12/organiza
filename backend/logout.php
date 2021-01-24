@@ -1,9 +1,10 @@
 <?php
-require_once __DIR__ . '/../autoload.php';
 
-use classes\Events;
 if(isset($_SESSION['user_id'])){
-    print_r(Events::getUserEvents());
+    unset($_SESSION['user_id']);
+    session_destroy();
+    header("Location: /login");
+  
 }else{
     echo '{
         "error": 401,

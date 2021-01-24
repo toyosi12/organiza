@@ -1,13 +1,19 @@
+<?php
+    if(!isset($_SESSION['user_id'])){
+        header("Location: /login");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Eventify Admin</title>
+    <title>Organiza Dashboard</title>
     <?php
         include 'externals.php';
     ?>
+    <link type="text/css" rel="stylesheet" href="cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
 
     <link type="text/css" rel="stylesheet" href="/views/styles/admin.css" />
 </head>
@@ -19,7 +25,7 @@
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-md-12 mb-2">
-                <h3>Welcome, {{ name }}</h3>
+                <h3>Welcome, <?php echo (isset($_SESSION['first_name'])) ?  $_SESSION['first_name'] :  ''; ?></h3>
             </div>
             <div class="col-md-12 mb-3">
                 <a href="/dashboard/events/create" class="btn btn-primary text-white"><i class="fa fa-plus mr-2"></i>Create an Event</a>
@@ -53,11 +59,8 @@
     </div>
 
     <script>
-         $(document).ready(function() {
-           $('#events').DataTable();
-
+        $(document).ready(function() {
            getEvents();
-           
         })
         
          async function getEvents(){
@@ -95,6 +98,9 @@
 
                         $('#events tbody').html(tableRows);
                     })
+
+                    $('#events').DataTable();
+
          }
 
          async function _deleteEvent(eventId){
@@ -109,9 +115,12 @@
             .then(data => {
                 console.log('xx: ', data);
                 if(data.success){
-                  window.location.reload();  
+                    bootbox.alert(data.message, function(){
+                        window.location.reload();  
+                    });
+                }else{
+                    bootbox.alert(data.message);
                 }
-                //bootbox.alert(data.message);
             })
             .catch(error => {
                 console.log('error: ', error);

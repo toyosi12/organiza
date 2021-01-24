@@ -48,7 +48,14 @@ class Auth extends Crud{
                         VALUES (?, ?, ?, ?, ?)";
         $binder = array("sssss", "$data[firstName]", "$data[lastName]", "$data[email]", "$data[phone]", \sha1($data['password']));
         $stmt = parent::create($query, $binder);
-        if($stmt){
+        if($stmt['success']){
+            $userId = $stmt['insert_id'];
+            $firstName = $data['firstName'];
+            if(!isset($_SESSION)){
+                session_start();
+            }
+            $_SESSION['user_id'] = $userId;
+            $_SESSION['first_name'] = $firstName;
             return '{
                 "success": true,
                 "message": "Account created successfully."
@@ -77,7 +84,7 @@ class Auth extends Crud{
 
         $data['password'] = \sha1($data['password']);
 
-        $query = "SELECT id FROM users WHERE `email` = ? AND `password` = ?";
+        $query = "SELECT id, first_name FROM users WHERE `email` = ? AND `password` = ?";
         $binder = array("ss", "$data[email]", "$data[password]");
         $stmt = parent::read($query, $binder);
         if($stmt->num_rows === 1){
@@ -86,10 +93,9 @@ class Auth extends Crud{
             $firstName = $row['first_name'];
             if(!isset($_SESSION)){
                 session_start();
-                $_SESSION['user_id'] = $userId;
-                $_SESSION['first_name'] = $firstName;
-                print_r($_SESSION);
             }
+            $_SESSION['user_id'] = $userId;
+            $_SESSION['first_name'] = $firstName;
             return '{
                 "success": true,
                 "message": "Login succesful"

@@ -2,7 +2,7 @@ h1{
     font-size: 5em;
 }
 .left, .right{
-    height: 100vh;
+    height: 93.2vh;
 }
 .right{
     padding-top: 10%;
@@ -22,5 +22,19 @@ h1{
 .form-control{
     padding-top: 0.8em;
     padding-bottom: 0.8em;
+}
+
+.btn-primary{
+    background-color: rgb(3, 3, 128);
+}
+
+.badge-primary{
+    background-color: rgb(3, 3, 128);
+}
+
+@media screen and (max-width: 600px){
+    .left{
+        display: none;
+    }
 }
 

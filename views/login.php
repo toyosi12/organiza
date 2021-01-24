@@ -10,10 +10,13 @@
     <link type="text/css" rel="stylesheet" href="/views/styles/auth.css" />
 </head>
 <body>
+    <?php
+        include_once __DIR__ . "/includes/nav.php";
+    ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-7 left auth-bg">
-                <h1 class="text-center text-white auth-text">Eventify</h1>
+                <h1 class="text-center text-white auth-text">Organiza</h1>
                 <h4 class="text-center text-white">Login</h4>
             </div>
 
@@ -44,7 +47,7 @@
                         <div class="invalid-feedback">Password is required</div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-block form-control" id="submit">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block form-control" id="submit">Login</button>
                     </div>
                 </form>
     
@@ -97,6 +100,8 @@
                 $('#submit').prop('disabled', false).html('Signup');
                 if(data.success){
                     location.href = "/dashboard/events";
+                }else{
+                    bootbox.alert(data.message);
                 }
                 console.log(data);
             })

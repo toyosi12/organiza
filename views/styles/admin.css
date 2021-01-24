@@ -13,3 +13,11 @@ nav{
     height: 80px;
     background-color: #ccc;
 }
+
+.btn-primary{
+    background-color: rgb(3, 3, 128);
+}
+
+.badge-primary{
+    background-color: rgb(3, 3, 128);
+}

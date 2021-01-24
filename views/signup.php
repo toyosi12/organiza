@@ -11,10 +11,13 @@
 
 </head>
 <body>
+    <?php
+        include_once __DIR__ . "/includes/nav.php";
+    ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-7 left auth-bg">
-                <h1 class="text-center text-white auth-text">Eventify</h1>
+                <h1 class="text-center text-white auth-text">Organiza</h1>
                 <h4 class="text-center text-white">Signup</h4>
             </div>
 
@@ -104,7 +107,7 @@
                     </div>
         
                     <div class="form-group">
-                        <button type="submit" class="btn btn-danger btn-block form-control" id="submit">Signup</button>
+                        <button type="submit" class="btn btn-primary btn-block form-control" id="submit">Signup</button>
                     </div>
                 </form>
                 <p class="text-right"><a href="/login">Already signed up? Login here</a></p>
@@ -151,7 +154,7 @@
                     }
                 
                 if($('#password').val().length < 6){
-                   // $('#matching-passwords').html("Password must not be less than 6 characters");
+                   $('#matching-passwords').html("Password must not be less than 6 characters");
                     matchingPasswords = false;
                 }else{
                     matchingPasswords = true;
@@ -180,6 +183,14 @@
                 .then(response => response.json())
                 .then(data => {
                     $('#submit').prop('disabled', false).html('Signup');
+                    if(!data.success){
+                        bootbox.alert(data.message);
+                    }else{
+                        bootbox.alert(data.message, function(){
+                            location.href = "/dashboard/events";
+
+                        })
+                    }
                     console.log(data);
                 })
                 .catch(error => {

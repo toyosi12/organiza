@@ -1,10 +1,15 @@
+<?php
+    if(!isset($_SESSION['user_id'])){
+        header("Location: /login");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Eventify Admin</title>
+    <title>Organiza Dashboard</title>
     <?php
         include 'externals.php';
     ?>
@@ -18,7 +23,7 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-md-7 mx-auto mb-2">
-                <h3>Edit Event</h3>
+                <h3><a href="/dashboard/events" class="btn btn-light mr-3"><i class="fa fa-arrow-left mr-2"></i>Back</a>Edit Event</h3>
 
                 <div class="card">
                     <div class="card-body">
@@ -38,7 +43,7 @@
                                 <small class="ml-2">Max: 100kb</small>
                             </div>
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">Title*</label>
                                 <input 
                                         type="text" 
                                         name="title" 
@@ -48,12 +53,12 @@
                                         required 
                                         />
                                 <div class="valid-feedback"></div>
-                                <div class="invalid-feedback"></div>
+                                <div class="invalid-feedback">This field is required</div>
                             </div>
 
 
                             <div class="form-group">
-                                <label for="description">Description</label>
+                                <label for="description">Description*</label>
                                 <textarea 
                                         name="description" 
                                         id="description" 
@@ -63,13 +68,13 @@
                                         rows="4" 
                                         ></textarea>
                                 <div class="valid-feedback"></div>
-                                <div class="invalid-feedback"></div>
+                                <div class="invalid-feedback">This field is required</div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="start_date">Start Date</label>
+                                        <label for="start_date">Start Date*</label>
                                         <input 
                                                 type="date" 
                                                 name="start_date" 
@@ -79,13 +84,13 @@
                                                 required
                                                 />
                                         <div class="valid-feedback"></div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="invalid-feedback">This field is required</div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="end_date">End Date</label>
+                                        <label for="end_date">End Date*</label>
                                         <input 
                                                 type="date" 
                                                 name="end_date" 
@@ -95,7 +100,7 @@
                                                 required
                                                 />
                                         <div class="valid-feedback"></div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="invalid-feedback">This field is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +108,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="start_time">Start Time</label>
+                                        <label for="start_time">Start Time*</label>
                                         <input 
                                                 type="time" 
                                                 name="start_time" 
@@ -113,13 +118,13 @@
                                                 required
                                                 />
                                         <div class="valid-feedback"></div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="invalid-feedback">This field is required</div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="end_time">End Time</label>
+                                        <label for="end_time">End Time*</label>
                                         <input 
                                                 type="time" 
                                                 name="end_time" 
@@ -129,13 +134,13 @@
                                                 required
                                                 />
                                         <div class="valid-feedback"></div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="invalid-feedback">This field is required</div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="address">Address</label>
+                                <label for="address">Address*</label>
                                 <input 
                                         type="text" 
                                         name="address" 
@@ -145,11 +150,11 @@
                                         required 
                                         />
                                 <div class="valid-feedback"></div>
-                                <div class="invalid-feedback"></div>
+                                <div class="invalid-feedback">This field is required</div>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-danger btn-block">Create Event</button>
+                                <button type="submit" class="btn btn-primary btn-block">Edit Event</button>
                             </div>
                            
                         </form>
@@ -173,7 +178,7 @@
                     if (form.checkValidity() === false) {
                         event.stopPropagation();
                     }else{
-                        createEvent();
+                        editEvent();
                     }
                     form.classList.add('was-validated');
     
@@ -237,11 +242,12 @@
                 console.log(data);
             })
             .catch(error => {
+                location.href = "/dashboard/events";
                 console.log('Error');
             })
         }
 
-        async function createEvent(){            
+        async function editEvent(){            
             let formData = new FormData();
             formData.append('title', $('#title').val());
             formData.append('eventType', $('#event_type').val());
@@ -252,6 +258,7 @@
             formData.append('endTime', $('#end_time').val());
             formData.append('address', $('#address').val());
             formData.append('image', document.getElementById('event_image').files[0]);
+            formData.append('eventId', <?php echo $_GET['event']; ?>);
 
             await fetch('/api/events/edit', {
                 method: 'POST',
@@ -260,9 +267,12 @@
             .then(response => response.json())
             .then(data => {
                 console.log('data: ', data);
-                alert(data.message);
                 if(data.success){
-                    location.href = "/dashboard/events";
+                    bootbox.alert(data.message, function(){
+                        location.href = "/dashboard/events";
+                    });
+                }else{
+                    bootbox.alert(data.message);
                 }
             })
             .catch(error => {

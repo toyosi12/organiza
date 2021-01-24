@@ -1,0 +1,93 @@
+body{
+    background-color: #fafafa;
+}
+
+
+.card-img-top{
+    height: 140px;
+}
+
+._carousel{
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7)), url("/views/images/auth-bg.jpg");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 30px;
+    padding-top: 100px;
+    text-align: center;
+}
+
+.btn{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.register{
+    border: solid 2px rgb(8, 8, 121);
+    background-color: #fff;
+    color:rgb(8, 8, 121); 
+}
+
+.card:hover{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.login{
+    border: solid 2px rgb(8, 8, 121);
+    background-color: rgb(8, 8, 121);
+    color: #fff;
+}
+
+.register:hover, .login:hover{
+    background: none;
+    color: #fff !important;
+
+}
+
+.card-body{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.date{
+    font-size: 0.8em
+}
+.premium{
+    background-color: rgb(233, 232, 250);
+}
+
+.badge-premium{
+    background-color: #11038d;
+    color: #fff;
+    margin-bottom: 3px;
+}
+
+.badge-premium.hidden{
+    visibility: hidden;
+}
+
+.card-title{
+    margin-bottom: 3px;
+}
+
+@media screen and (max-width: 600px){
+    .container{
+        margin-top: 0 !important; 
+    }
+    ._carousel-container{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    h2{
+        font-size: 1.5em;
+    }
+
+
+}
+
